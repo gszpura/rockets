@@ -1,11 +1,6 @@
-from turtle import *
-speed(0)
-color('red', 'yellow')
-begin_fill()
-while True:
-    forward(200)
-    left(170)
-    if abs(pos()) < 1:
-        break
-end_fill()
-done()
+import matplotlib.pyplot as plt
+
+# start point, how long to print
+x, y = [0, 0], [0, 5]
+plt.plot(x, y, marker='o')
+plt.show()
