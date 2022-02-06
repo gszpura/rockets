@@ -67,10 +67,20 @@ print("CONV CONE D:", dc)
 # http://www.nakka-rocketry.net/articles/noz_example3.pdf
 # KNSU: https://www.nakka-rocketry.net/succhem.html
 print("-----------------------TODO EXPANSION RATIO--------------------------")
+# two-phase flow for KNSU?
+# p0 is steady-state chamber pressure, which can be calculated like this:
+# https://www.nakka-rocketry.net/th_pres.html
+# http://www.nakka-rocketry.net/articles/thr_example7.pdf
+# Kn = Ab/A*
+# Ab is burnining area
+# A* is throat area as I think
+# to calc exp ratio calc p0, to calc p0 calc Kn*q*a*c
+# Kn can be calculated as whole area available to burn
+# TODO
 k = 1.044
-pe = 1.0
-p0 = 21.43 # how this is calculated???
-print("Convergence", "k:", k, "p0:", p0)
+pe = 1.01325  # 1atm= pe bar
+p0 = 15.62  # bar ???
+print("Convergence", "k:", k, "p0:", p0, "p0-atm:", p0/1.01325)
 
 fst = ((k + 1)/2.0)**(1.0/(k-1))
 print("First term:", fst)
@@ -80,7 +90,7 @@ third = (k + 1)/(k - 1.0)*(1.0 - (pe / p0)**((k-1)/k))
 print("Third term: ", third)
 expX = fst*sec*math.sqrt(third)
 ratio = 1.0 / expX
-print("Expansion ratio: ", ratio)
+print(">>> Expansion ratio: ", ratio)
 
 aX = at*ratio
 rX = math.sqrt(aX/math.pi)
